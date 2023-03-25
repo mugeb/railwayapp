@@ -9,7 +9,7 @@ from peewee import (
     FloatField, TextField, IntegrityError
 )
 from playhouse.shortcuts import model_to_dict
-
+from uuid import uuid4
 
 ########################################
 # Begin database stuff
