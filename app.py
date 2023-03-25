@@ -92,7 +92,7 @@ def predict():
         observation = obs_dict['data']
     except KeyError:
         response = {}
-        response["error"] = "Field `id` missing from request: {}".format(obs_dict)
+        response["error"] = "data is missing: {}".format(obs_dict)
          #print(response)
         return response  
      
