@@ -62,31 +62,31 @@ with open(os.path.join('dtypes.pickle'), 'rb') as fh:
 ########################################
 # Begin webserver stuff
 
-def b(base_request):
-    if "observation_id" not in base_request:
+def b(obs_dict):
+    if "observation_id" not in obs_dict:
         base_request["observation_id"] = None
-        base_request["error"] = "Field `id` missing from request: {}".format(base_request)
+        base_request["error"] = "Field `id` missing from request: {}".format(obs_dict)
         
         
-        return base_request
-    return base_request
+        return obs_dict
+    return obs_dict
 
 
 app = Flask(__name__)
 
 @app.route('/predict', methods=['POST'])
 def predict(): 
-    obs_dict = request.get_json
+    obs_dict = request.get_json()
     
-    #request = b(request)
-    #_id = request['observation_id']
+    #obs_dict = b(obs_dict)
+    #_id = obs_dict['observation_id']
     
     try:
-        _id = obs_dict['observation_id']
+        _id = obs_dict["observation_id"]
     except:
         _id = None
         return ({"observation_id": _id,
-                "error": "observation_id is missing"})
+                "error": "observation_id is missinggg"})
     
     try:
         observation = obs_dict['data']
